@@ -26,4 +26,15 @@ describe('anecdote reducer', () => {
     expect(newState[0].votes).toEqual(1)
     expect(newState[1].votes).toEqual(initialState[1].votes)
   })
+
+  test('can create new anecdote', () => {
+    const action = {
+      type: 'NEW_ANECDOTE',
+      payload: { content: 'This is a test anecdote' }
+    }
+
+    deepFreeze(initialState)
+    const newState = anecdoteReducer(initialState, action)
+    expect(newState[2]).toHaveProperty('content', 'This is a test anecdote')
+  })
 })
