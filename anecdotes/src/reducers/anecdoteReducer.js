@@ -37,10 +37,7 @@ export const voteAction = (id) => {
   }
 }
 
-const reducer = (state = initialState, action) => {
-  console.log('state now:', state)
-  console.log('action', action)
-
+const anecdoteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'VOTE':
       const anecdoteToModify = state.find(anecdote => anecdote.id === action.payload.id)
@@ -61,4 +58,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default anecdoteReducer
