@@ -19,6 +19,24 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject).sort((a, b) => a.votes - b.votes)
 
+export const newAnecdoteAction = (content) => {
+  return {
+    type: 'NEW_ANECDOTE',
+    payload: {
+      content
+    }
+  }
+}
+
+export const voteAction = (id) => {
+  return {
+    type: 'VOTE',
+    payload: {
+      id
+    }
+  }
+}
+
 const reducer = (state = initialState, action) => {
   console.log('state now:', state)
   console.log('action', action)
