@@ -35,6 +35,17 @@ describe('anecdote reducer', () => {
 
     deepFreeze(initialState)
     const newState = anecdoteReducer(initialState, action)
-    expect(newState[2]).toHaveProperty('content', 'This is a test anecdote')
+    expect(newState[newState.length - 1]).toHaveProperty('content', 'This is a test anecdote')
+  })
+
+  test('anecdote are sorted by vote', () => {
+    const action = {
+      type: 'VOTE',
+      payload: { id: 2 }
+    }
+
+    deepFreeze(initialState)
+    const newState = anecdoteReducer(initialState, action)
+    expect(newState[0]).toHaveProperty('votes', 1)
   })
 })
